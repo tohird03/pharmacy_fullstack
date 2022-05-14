@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/pharmacy.css">
+    <title>Document</title>
+
+    <style>
+        .visually-hidden {
+            clip: rect(0 0 0 0);
+            clip-path: inset(50%);
+            height: 1px;
+            overflow: hidden;
+            position: absolute;
+            white-space: nowrap;
+            width: 1px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar bg-dark  navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid ">
+            <a class="navbar-brand text-light text-white" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-light text-white">
+                    <li class="nav-item ">
+                        <a class="nav-link active text-light text-white" aria-current="page"
+                            href="./pharmacyAdd">Pharmacy add</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="/tabletsAdd">Tablets add</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item text-light" href="#">Action</a></li>
+                            <li><a class="dropdown-item text-light" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="container d-flex justify-content-between  py-5">
+        <div class="cards w-50 d-flex flex-column align-items-center">
+            <h1>Barcha dorixonalar</h1>
+            <% pharmacy?.map(i=> { %>
+                <div class="border-1 border-dark border position mb-3"
+                    style="width: 16rem; padding: 20px; min-height: 200px;">
+
+                    <img height="200" src=<%=i.img.split("").slice(0, 4).join("")=="http" ? i.img
+                        : "data:image/png;base64,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"
+                        %> class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <%= i.name %>
+                        </h5>
+                        <p class="card-text">Joylashuvi: <%= i.address %>
+                        </p>
+
+                    </div>
+                    <button id=<%= i.id %>  class="btn category__tablets btn-primary w-100">Dorilar ro'yxati</button>
+                    <div class="d-flex justify-content-between ">
+                        <button id=<%=i.id %> class="btn delete__btn btn-danger w-50">
+                            O'chirish
+                        </button>
+                        <!-- Button trigger modal -->
+                        <button id=<%=i.id %> class="update btn btn-warning w-50">
+                            Change
+                        </button>
+                        <div class="hidden__bg body__close"></div>
+                        <div class="form__change p-5 d-none bg-warning" id=<%=i.id %> >
+                            <form action="/change" method="post">
+                                <div class="visually-hidden">
+                                    <input id="foundId" type="text" name="id" id="">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="title" class="form-label">Pharmacy title</label>
+
+                                    <input name="name" type="text" class="form-control" id="title">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="address" class="form-label">Pharmacy address</label>
+
+                                    <input name="address" type="text" class="form-control" id="price" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="color" class="form-label">Img link</label>
+
+                                    <input name="img" type="text" class="form-control" id="price">
+                                </div>
+
+                                <button style="display: flex; justify-content:flex-end;" class="btn btn-success"
+                                    type="submit">Add</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <% }) %>
+        </div>
+
+        <div class="w-100 tablets">
+            <div>
+                <h1>Boshqa dorilar</h1>
+                <div class="d-flex flex-wrap mb-3" id="render">
+
+                </div>
+            </div>
+            <h1>Barcha dorilar ro'yxati</h1>
+            <% tablets?.map(e=> { %>
+                <div>
+                    <table class="table  table-striped">
+                        <tr class="row">
+                            <th class="col-3">
+                                <%= e.name %>
+                            </th>
+                            <th class="col-2">
+                                <%= e.price %>
+                            </th>
+                            <th class="col-4">
+                                <%= e.desc %>
+                            </th>
+                            <th class="col-3 d-flex">
+                                <button id=<%=e.id %> class="change__tablets btn btn-danger">O'chirish</button>
+                                <!-- Button trigger modal -->
+                                <button id=<%=e.id %> class="update btn btn-warning w-50">
+                                    Change
+                                </button>
+                                <div class="hidden__bg body__close"></div>
+                                <div class="form__change-tables  p-5 d-none bg-warning" id=<%=e.id %> >
+                                    <form action="/changeTablets" method="post">
+                                        <div class="visually-hidden">
+                                            <input id="foundIdTablets" type="text" name="id" id="">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="title" class="form-label">Tablets title</label>
+
+                                            <input name="name" type="text" class="form-control" id="title">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="address" class="form-label">Tablets price</label>
+
+                                            <input name="price" type="text" class="form-control" id="price" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="color" class="form-label">Tablets description</label>
+
+                                            <input name="desc" type="text" class="form-control" id="price">
+                                        </div>
+
+                                        <button style="display: flex; justify-content:flex-end;" class="btn btn-success"
+                                            type="submit">Add</button>
+                                    </form>
+                                </div>
+                            </th>
+                        </tr>
+                    </table>
+                </div>
+                <% }) %>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script src="assets/pharmacy.js"></script>
+</body>
+
+</html>
