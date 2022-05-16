@@ -3,6 +3,7 @@ const path = require("path")
 const app = express()
 const PORT = 9000
 const router = require("./router/routes")
+require("./start/prod")(app)
 
 app.set("view engine", "ejs")
 app.set("views", __dirname + "/views")
