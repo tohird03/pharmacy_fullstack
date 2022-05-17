@@ -1,16 +1,9 @@
 [
     {
         "id": 2,
-        "name": "Galotan",
-        "price": "1 000sum",
-        "desc": "inyeksiya uchun eritma 200 mg/ml",
-        "pharmacyId": 1
-    },
-    {
-        "id": 5,
-        "name": "Midazolam",
-        "price": "4 000sum",
-        "desc": "inyeksiya uchun eritma 15 mg/ 3 ml",
+        "name": "Tohirjon Doniyorov",
+        "price": "awdadasd",
+        "desc": "asdasdasd",
         "pharmacyId": 1
     },
     {

@@ -11,7 +11,7 @@ let elChangeTablets = document.querySelector('.change__tablets');
 
 elCard.addEventListener("click", e => {
     if(e.target.matches(".delete__btn")){
-        fetch(`http://localhost:9000/delete/${e.target.id}`, {
+        fetch(`https://tourmaline-talented-responsibility.glitch.me/delete/${e.target.id}`, {
             method: "DELETE"
         })
             .then(res => res.json())
@@ -24,7 +24,7 @@ elCard.addEventListener("click", e => {
         elBodyBg.setAttribute('class', 'overlay')
     }else if(e.target.matches(".category__tablets")){
         render.innerHTML = null
-        fetch(`http://localhost:9000/category/${e.target.id}`, {
+        fetch(`https://tourmaline-talented-responsibility.glitch.me/category/${e.target.id}`, {
             method: "POST"
         })
             .then(res => res.json())
@@ -47,7 +47,7 @@ elCard.addEventListener("click", e => {
 
 elTablets.addEventListener("click", (e)=> {
     if(e.target.matches(".change__tablets")){
-        fetch(`http://localhost:9000/remove/${e.target.id}`, {
+        fetch(`https://tourmaline-talented-responsibility.glitch.me/remove/${e.target.id}`, {
             method: "DELETE"
         })
         .then(res => res.json())
